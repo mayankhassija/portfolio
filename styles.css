@@ -1,0 +1,555 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* This is all you need in 2025 */
+}
+
+body {
+  font-family: "Space Grotesk", sans-serif;
+  background: #0a0a1a;
+  color: #ccd6f6;
+  overflow-x: hidden;
+}
+
+/* Navbar */
+#navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(10, 10, 26, 0.85);
+  backdrop-filter: blur(12px);
+  z-index: 1000;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid rgba(100, 100, 255, 0.2);
+}
+
+.nav-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+}
+
+#navbar a {
+  color: #8892b0;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+#navbar a:hover {
+  color: #64ffda;
+}
+
+/* Hero */
+#welcome-section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+.hero {
+  z-index: 2;
+  padding: 0 2rem;
+}
+
+.gradient-text {
+  font-size: 4.5rem;
+  font-weight: 700;
+  background: linear-gradient(120deg, #64ffda, #a8ff6a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.typing {
+  font-size: 2rem;
+  margin: 1.5rem 0;
+  color: #64ffda;
+}
+
+.cursor {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.subtitle {
+  font-size: 1.4rem;
+  color: #8892b0;
+}
+
+#particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Sections */
+#projects,
+#contact {
+  /* padding: 100px 20px 140px; */
+  text-align: center;
+  /* background: #0f0f1f; */
+}
+
+#projects h2,
+#contact h2 {
+  font-size: 3rem;
+  margin-bottom: 4rem;
+  color: #ccd6f6;
+}
+
+/* ========== SMOOTH SLIDING CAROUSEL (ONLY ONE VERSION) ========== */
+.iframe-carousel-container {
+  max-width: 1000px;
+  margin: 4rem auto;
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  background: rgba(20, 20, 40, 0.8);
+}
+
+.iframe-carousel {
+  height: 600px;
+  overflow: hidden;
+  position: relative;
+}
+
+.iframe-carousel-wrapper {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.iframe-slide {
+  min-width: 100%;
+  height: 100%;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.iframe-slide iframe {
+  width: 100%;
+  height: 480px;
+  border: none;
+  border-radius: 20px 20px 0 0;
+  background: #0f0f1f;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  pointer-events: auto;
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Custom scrollbar inside iframes */
+.iframe-slide iframe::-webkit-scrollbar {
+  width: 10px;
+}
+
+.iframe-slide iframe::-webkit-scrollbar-track {
+  background: #16213e;
+  border-radius: 10px;
+}
+
+.iframe-slide iframe::-webkit-scrollbar-thumb {
+  background: #64ffda;
+  border-radius: 10px;
+}
+
+.iframe-slide iframe::-webkit-scrollbar-thumb:hover {
+  background: #52e6c3;
+}
+
+/* Caption */
+.iframe-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(10, 10, 26, 0.98));
+  padding: 2rem 1.5rem;
+  text-align: center;
+  color: #ccd6f6;
+  z-index: 2;
+}
+
+.iframe-caption h3 {
+  font-size: 1.8rem;
+  color: #64ffda;
+  margin: 0 0 0.5rem 0;
+}
+
+.iframe-caption p {
+  color: #8892b0;
+  font-size: 1.1rem;
+}
+
+/* Arrows */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(100, 255, 218, 0.2);
+  color: #64ffda;
+  border: none;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(10px);
+}
+
+.carousel-btn:hover {
+  background: #64ffda;
+  color: #0a0a1a;
+  transform: translateY(-50%) scale(1.15);
+}
+
+.prev {
+  left: 20px;
+}
+
+.next {
+  right: 20px;
+}
+
+/* Dots */
+.carousel-dots {
+  text-align: center;
+  padding: 1.5rem 0;
+}
+
+.dot {
+  height: 14px;
+  width: 14px;
+  margin: 0 10px;
+  background: #8892b0;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.dot.active,
+.dot:hover {
+  background: #64ffda;
+  transform: scale(1.3);
+  box-shadow: 0 0 20px rgba(100, 255, 218, 0.6);
+}
+
+/* Contact */
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: #fff;
+  color: #000;
+  padding: 1.2rem 3rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.3rem;
+  transition: all 0.4s ease;
+  box-shadow: 0 10px 30px rgba(77, 77, 77, 0.3);
+}
+
+.social-links a:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(100, 100, 100, 0.4);
+}
+
+.github-logo {
+  width: 40px;
+  height: 40px;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .gradient-text {
+    font-size: 3.2rem;
+  }
+
+  .typing {
+    font-size: 1.5rem;
+  }
+
+  .iframe-carousel {
+    height: 520px;
+  }
+
+  .iframe-slide iframe {
+    height: 400px;
+  }
+
+  .carousel-btn {
+    width: 48px;
+    height: 48px;
+    font-size: 1.6rem;
+  }
+
+  #navbar {
+    display: none;
+  }
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+}
+
+/* Default button style (GitHub = white) */
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  /* gap: 16px; */
+  /* padding: 1.2rem 3rem; */
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.3rem;
+  transition: all 0.4s ease;
+  box-shadow: 0 10px 30px rgba(77, 77, 77, 0.3);
+}
+
+.linkedin-btn .linkedin-logo {
+  width: 40px;
+  height: 40px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Hover effects */
+.social-links a:hover {
+  transform: translateY(-8px);
+}
+
+.iframe-caption {
+  padding: 2rem 1.5rem;
+  text-align: center;
+  color: #ccd6f6;
+  z-index: 2;
+
+  /* Add these two lines – bulletproof */
+  overflow: hidden;
+  /* never let text escape */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.iframe-caption h3,
+.iframe-caption p {
+  margin: 0;
+  overflow-wrap: break-word;
+  /* modern & perfect */
+  word-wrap: break-word;
+  /* old browser fallback */
+}
+
+/* ←←← FINAL VERSION – Goldilocks zone achieved →→→ */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 32px;
+  max-width: 1100px;
+  /* comfortable max width */
+  margin: 60px auto 0;
+  padding: 0 20px;
+  justify-content: center;
+  /* ← centers cards when there's empty space */
+}
+
+.project-card {
+  background: #112240;
+  padding: 32px;
+  /* back to generous but controlled */
+  border-radius: 12px;
+  transition: all 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+}
+
+.project-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.45);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.folder-icon svg {
+  stroke: #64ffda;
+  width: 44px;
+  height: 44px;
+}
+
+.external-links a {
+  color: #ccd6f6;
+  /* ← your original light color */
+  transition: all 0.3s ease;
+}
+
+.external-links a:hover {
+  color: #64ffda;
+  transform: translateY(-4px);
+}
+
+.card-title {
+  font-size: 1.55rem;
+  font-weight: 600;
+  color: #e6f1ff;
+  /* ← exact original lightest-slate */
+  margin: 0 0 16px 0;
+}
+
+.card-desc {
+  flex: 1;
+  color: #8892b0;
+  /* ← perfect slate gray */
+  line-height: 1.65;
+  margin: 0 0 24px 0;
+  font-size: 1.05rem;
+}
+
+.card-tech {
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.92rem;
+  color: #64ffda;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,
+      minmax(350px, 380px));
+  /* ← THIS IS THE MAGIC */
+  gap: 32px;
+  justify-content: center;
+  /* ← centers the cards perfectly */
+  max-width: 1400px;
+  margin: 60px auto 0;
+  padding: 0 20px;
+}
+
+.external-links {
+  display: flex;
+  gap: 0;
+  /* removes ALL space between the icons */
+}
+
+.external-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Optional: tiny 2–4px breathing room if you want them touching but not overlapping */
+.external-links a+a {
+  margin-left: 4px;
+  /* change to 0px if you want them 100% touching */
+}
+
+/* ←←← ADD / REPLACE THIS →→→ */
+#contact {
+  padding: 120px 20px 80px !important;
+  /* top | sides | bottom ← much less bottom */
+  /* OR even tighter: */
+  /* padding: 100px 20px 60px; */
+}
+
+/* Optional: make sure nothing else adds extra space */
+#contact h2 {
+  margin-bottom: 3rem;
+}
+
+/* —— Blurry section divider —— */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(to right,
+      transparent,
+      rgba(100, 255, 218, 0.3),
+      /* your teal, semi-transparent */
+      transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  margin: 0 auto;
+  max-width: 1000px;
+  border: none;
+}
+
+/* Optional: subtle glow version (even prettier) */
+.section-divider.glow {
+  height: 2px;
+  background: rgba(100, 255, 218, 0.15);
+  box-shadow: 0 0 15px rgba(100, 255, 218, 0.4);
+}
+
+/* ——— Beautiful blurry divider with perfect spacing ——— */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(to right,
+      transparent,
+      rgba(100, 255, 218, 0.4),
+      transparent);
+  margin: 140px auto 120px auto;
+  /* ← THIS IS THE KEY: lots of breathing room */
+  max-width: 1000px;
+  border: none;
+}
+
+/* Mobile – slightly less space so it doesn’t feel empty */
+@media (max-width: 768px) {
+  .section-divider {
+    margin: 100px auto 90px auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-divider {
+    margin: 80px auto 70px auto;
+  }
+}
+
+.section-divider.glow {
+  height: 1px;
+  background: rgba(100, 255, 218, 0.3);
+  box-shadow: 0 0 20px rgba(100, 255, 218, 0.5);
+  margin: 160px auto 140px auto;
+  max-width: 1000px;
+  border: none;
+}
+
+@media (max-width: 768px) {
+  .section-divider.glow {
+    margin: 120px auto 110px auto;
+  }
+}

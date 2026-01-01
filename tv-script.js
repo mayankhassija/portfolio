@@ -39,13 +39,20 @@ function loadProject(index) {
             try {
                 const doc = iframe.contentDocument || iframe.contentWindow.document;
                 const style = doc.createElement('style');
-                style.textContent = `
-                    body { overflow: hidden; }
-                    /* Hide scrollbar for Chrome/Safari/Opera */
-                    ::-webkit-scrollbar { display: none; }
-                    /* Hide scrollbar for IE, Edge and Firefox */
-                    body { -ms-overflow-style: none;  scrollbar-width: none; }
-                `;
+                if (project.name === 'Pong Game') {
+                    style.textContent = `
+                        body { overflow: hidden; }
+                        /* Hide scrollbar for Chrome/Safari/Opera */
+                        ::-webkit-scrollbar { display: none; }
+                        /* Hide scrollbar for IE, Edge and Firefox */
+                        body { -ms-overflow-style: none;  scrollbar-width: none; }
+                    `;
+                } else {
+                    // For other projects like NCERT Downloader, allow scrolling
+                    style.textContent = `
+                        body { overflow: auto; }
+                    `;
+                }
                 doc.head.appendChild(style);
 
                 // Focus for game controls

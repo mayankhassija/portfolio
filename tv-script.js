@@ -1,6 +1,6 @@
 const projects = [
-    { name: 'Pong Game', url: 'https://mayankhassija.github.io/pongame/' },
-    { name: 'NCERT Downloader', url: 'https://mayankhassija.github.io/NCERT-Textbook-Downloader/' },
+    { name: 'Pong Game', url: '../pongame/index.html' },
+    { name: 'NCERT Downloader', url: '../NCERT-Textbook-Downloader/index.html' },
 ];
 
 const iframe = document.getElementById('tv-iframe');
@@ -31,11 +31,32 @@ function loadProject(index) {
     iframe.style.opacity = '0';
     setTimeout(() => {
         iframe.src = project.url;
+
         iframe.onload = () => {
             iframe.style.opacity = '1';
+
+            // Try to inject styles to hide scrollbars and focus for games
+            try {
+                const doc = iframe.contentDocument || iframe.contentWindow.document;
+                const style = doc.createElement('style');
+                style.textContent = `
+                    body { overflow: hidden; }
+                    /* Hide scrollbar for Chrome/Safari/Opera */
+                    ::-webkit-scrollbar { display: none; }
+                    /* Hide scrollbar for IE, Edge and Firefox */
+                    body { -ms-overflow-style: none;  scrollbar-width: none; }
+                `;
+                doc.head.appendChild(style);
+
+                // Focus for game controls
+                iframe.contentWindow.focus();
+                iframe.contentWindow.addEventListener('click', () => iframe.contentWindow.focus());
+            } catch (e) {
+                console.log('Could not inject styles (likely cross-origin restriction if on different domains):', e);
+            }
         };
-        // Fallback
-        setTimeout(() => iframe.style.opacity = '1', 500);
+        // Fallback fade in if onload is delayed
+        setTimeout(() => iframe.style.opacity = '1', 1000); // Increased timeout for load
     }, 200);
 
     // Update buttons
@@ -65,5 +86,5 @@ function stopAutoPlay() {
 document.addEventListener('DOMContentLoaded', () => {
     renderButtons();
     loadProject(0);
-    startAutoPlay();
+    // startAutoPlay(); // Disabled as per user request
 });

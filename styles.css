@@ -28,7 +28,8 @@ body {
 
 /* Hero Section */
 #welcome-section {
-  min-height: 80vh; /* Takes up most of the screen */
+  min-height: 80vh;
+  /* Takes up most of the screen */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -99,7 +100,9 @@ body {
 }
 
 @keyframes blink {
-  50% { opacity: 0; }
+  50% {
+    opacity: 0;
+  }
 }
 
 .subtitle {
@@ -135,20 +138,21 @@ body {
   border: 1px solid transparent;
 }
 
-.social-btn img, .social-btn svg {
+.social-btn img,
+.social-btn svg {
   width: 20px;
   height: 20px;
 }
 
 .social-btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .social-btn.github {
   background: rgba(255, 255, 255, 0.1);
   color: #fff;
-  border: 1px solid rgba(255,255,255,0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .social-btn.github:hover {
@@ -163,6 +167,16 @@ body {
 
 .social-btn.linkedin:hover {
   background: rgba(10, 102, 194, 0.4);
+}
+
+.social-btn.email {
+  background: rgba(100, 255, 218, 0.1);
+  color: #fff;
+  border: 1px solid rgba(100, 255, 218, 0.3);
+}
+
+.social-btn.email:hover {
+  background: rgba(100, 255, 218, 0.2);
 }
 
 /* Particles Canvas */
@@ -199,13 +213,15 @@ body {
   margin: 0 auto;
   max-width: 1200px;
   padding: 0 1rem;
-  perspective: 1500px; /* For 3D remote effect */
+  perspective: 1500px;
+  /* For 3D remote effect */
 }
 
 @media (min-width: 900px) {
   .tv-setup-container {
     flex-direction: row;
-    align-items: center; /* Center vertically relative to each other */
+    align-items: center;
+    /* Center vertically relative to each other */
     justify-content: center;
     gap: 5rem;
   }
@@ -217,9 +233,9 @@ body {
   background: #2b2b2b;
   padding: 15px;
   border-radius: 20px;
-  box-shadow: 
+  box-shadow:
     0 0 0 8px #1a1a1a,
-    0 20px 50px rgba(0,0,0,0.6);
+    0 20px 50px rgba(0, 0, 0, 0.6);
   width: 100%;
   max-width: 750px;
   aspect-ratio: 16/9;
@@ -237,13 +253,16 @@ body {
 }
 
 .tv-screen iframe {
-  width: 100%;
-  height: 100%;
+  width: 200%;
+  height: 200%;
   border: none;
   display: block;
-  opacity: 0; /* JS handles fade in */
+  opacity: 0;
+  /* JS handles fade in */
   transition: opacity 0.5s ease;
   background: #fff;
+  transform: scale(0.5);
+  transform-origin: 0 0;
 }
 
 /* Remote Control */
@@ -252,19 +271,20 @@ body {
   width: 200px;
   padding: 25px 20px;
   border-radius: 25px;
-  box-shadow: 
-    0 15px 35px rgba(0,0,0,0.5),
-    inset 0 2px 3px rgba(255,255,255,0.05);
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.5),
+    inset 0 2px 3px rgba(255, 255, 255, 0.05);
   display: flex;
   flex-direction: column;
   gap: 20px;
-  transform: rotateY(-10deg) rotateX(5deg); /* Slight 3D angle */
+  transform: rotateY(-10deg) rotateX(5deg);
+  /* Slight 3D angle */
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .remote-control:hover {
   transform: rotateY(0deg) rotateX(0deg) scale(1.05);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
 }
 
 .remote-header {
@@ -330,7 +350,7 @@ body {
 .remote-btn.active {
   background: #1a1a1a;
   color: var(--accent);
-  box-shadow: inset 0 2px 5px rgba(0,0,0,0.5);
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
   transform: translateY(3px);
   border-left: 3px solid var(--accent);
 }

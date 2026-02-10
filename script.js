@@ -1,5 +1,5 @@
-const GITHUB_USER = 'YOUR_USERNAME';
-const REPO_NAME = 'YOUR_REPO';
+const GITHUB_USER = 'mayankhassija';
+const REPO_NAME = 'portfolio';
 const audio = document.getElementById('audio-player');
 const playlistUI = document.getElementById('playlist');
 const trackTitle = document.getElementById('track-title');

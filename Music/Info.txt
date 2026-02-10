@@ -1,0 +1,20 @@
+Artist: Michael Jackson
+Album: Thriller
+Label: Epic {35.8P-11}
+Year: 1983
+Country: Japan
+Genre: Pop
+Running Time: 42:35
+
+Artist: Michael Jackson
+Title: Thriller
+==========================================
+01 - Michael Jackson - Wanna Be Startin' Somethin'
+02 - Michael Jackson - Baby Be Mine
+03 - Michael Jackson - The Girl Is Mine
+04 - Michael Jackson - Thriller
+05 - Michael Jackson - Beat It
+06 - Michael Jackson - Billie Jean
+07 - Michael Jackson - Human Nature
+08 - Michael Jackson - P. Y. T. (Pretty Young Thing)
+09 - Michael Jackson - The Lady in My Life

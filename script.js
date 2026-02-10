@@ -11,7 +11,7 @@ if ('serviceWorker' in navigator) {
 
 // 2. Fetch Music List from GitHub API
 async function loadLibrary() {
-    const url = `https://api.github.com/repos/${GITHUB_USER}/${REPO_NAME}/contents/music`;
+    const url = `https://api.github.com/repos/${GITHUB_USER}/${REPO_NAME}/contents/Music`;
     try {
         const response = await fetch(url);
         const files = await response.json();

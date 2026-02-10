@@ -1,151 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mayank Hassija</title>
-  <link rel="icon" href="favicon.png" type="image/png">
-  <link rel="stylesheet" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap"
-    rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lossless Cloud Player</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+    <div class="player-container">
+        <header>
+            <h1>My Lossless Library</h1>
+            <p id="status">Quality: 16-bit / 44.1kHz FLAC</p>
+        </header>
 
-  <!-- Hero Section -->
-  <section id="welcome-section">
-    <div class="hero-container">
-      <div class="profile-area">
-        <div class="profile-img-container">
-          <img src="https://avatars.githubusercontent.com/u/230149509?v=4" alt="Mayank Hassija" class="profile-img">
+        <div class="now-playing">
+            <h2 id="track-title">Select a track</h2>
+            <audio id="audio-player" controls preload="metadata"></audio>
         </div>
-      </div>
 
-      <div class="intro-area">
-        <h1>Hey, I'm <span class="gradient-text">Mayank Hassija</span></h1>
-        <p class="typing">Full-Stack Developer<span class="cursor">_</span></p>
-        <p class="subtitle">Building professional, scalable web applications.</p>
-
-        <div class="hero-social-links">
-          <a href="https://github.com/mayankhassija" target="_blank" rel="noopener" class="social-btn github">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub">
-            <span>GitHub</span>
-          </a>
-          <a href="https://www.linkedin.com/in/mayankhassija" target="_blank" rel="noopener"
-            class="social-btn linkedin">
-            <svg enable-background="new 0 0 24 24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor">
-              <path
-                d="m20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67h-3.56v-11.18h3.42v1.56h.05c.47-.9 1.63-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43c-1.14 0-2.06-.93-2.06-2.07 0-1.14.92-2.07 2.06-2.07 1.14 0 2.06.93 2.06 2.07 0 1.14-.93 2.07-2.06 2.07zM6.97 20.45h-3.2v-11.18h3.2zM22.23 0h-20.46c-.98 0-1.77.79-1.77 1.77v20.46c0 .98.79 1.77 1.77 1.77h20.46c.98 0 1.77-.79 1.77-1.77v-20.46c0-.98-.79-1.77-1.77-1.77z" />
-            </svg>
-            <span>LinkedIn</span>
-          </a>
-          <a href="mailto:mayankhassija@gmail.com" class="social-btn email">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
-              <path
-                d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-            </svg>
-            <span>Email</span>
-          </a>
+        <div class="playlist-container">
+            <ul id="playlist"></ul>
         </div>
-      </div>
     </div>
-    <canvas id="particles"></canvas>
-  </section>
 
-  <hr class="section-divider">
-
-  <!-- TV Project Showcase -->
-  <section id="projects">
-    <div class="tv-setup-container">
-      <!-- TV Frame -->
-      <div class="tv-frame">
-        <div class="tv-screen">
-          <iframe id="tv-iframe" src="" title="Project Display"></iframe>
-        </div>
-      </div>
-
-      <!-- Remote Control -->
-      <div class="remote-control">
-        <div class="remote-header">
-          <div class="brand">DEV-REMOTE</div>
-          <div class="ir-blaster"></div>
-        </div>
-        <div class="remote-buttons-grid">
-          <!-- Buttons injected by JS -->
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <script src="tv-script.js"></script>
-
-  <!-- Particles script (inline for simplicity or keep external if it was there) -->
-  <!-- I removed the snowfall script but kept particles canvas. 
-       Use a simple particles script if needed, or if it was in the old index, I'll restore a minimal one. 
-       The old index didn't show the particles JS in the 800 lines viewed, but it had a canvas.
-       I will add a simple particle effect to make it look 'professional' and alive. -->
-  <script>
-    const canvas = document.getElementById('particles');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    let particlesArray;
-
-    class Particle {
-      constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 2 + 1;
-        this.speedX = Math.random() * 1 - 0.5;
-        this.speedY = Math.random() * 1 - 0.5;
-        this.color = '#64ffda';
-      }
-      update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-        if (this.size > 0.2) this.size -= 0.01; // twinkle
-        if (this.size <= 0.2) this.size = Math.random() * 2 + 1;
-
-        if (this.x > canvas.width || this.x < 0) this.speedX = -this.speedX;
-        if (this.y > canvas.height || this.y < 0) this.speedY = -this.speedY;
-      }
-      draw() {
-        ctx.fillStyle = this.color;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    }
-
-    function init() {
-      particlesArray = [];
-      for (let i = 0; i < 50; i++) {
-        particlesArray.push(new Particle());
-      }
-    }
-
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (let i = 0; i < particlesArray.length; i++) {
-        particlesArray[i].update();
-        particlesArray[i].draw();
-      }
-      requestAnimationFrame(animate);
-    }
-
-    init();
-    animate();
-
-    window.addEventListener('resize', () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      init();
-    });
-  </script>
+    <script src="script.js"></script>
 </body>
-
 </html>

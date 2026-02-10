@@ -1,0 +1,50 @@
+body {
+    background: #121212;
+    color: white;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.player-container {
+    width: 100%;
+    max-width: 500px;
+    background: #1e1e1e;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+audio {
+    width: 100%;
+    margin-top: 20px;
+    filter: invert(100%) hue-rotate(180deg); /* Makes standard player look dark */
+}
+
+.playlist-container {
+    margin-top: 30px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    padding: 15px;
+    border-bottom: 1px solid #333;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+li:hover {
+    background: #333;
+}
+
+li.active {
+    color: #1db954;
+    font-weight: bold;
+}
